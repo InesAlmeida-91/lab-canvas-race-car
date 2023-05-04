@@ -1,7 +1,8 @@
 window.onload = () => {
   document.getElementById('start-button').onclick = () => {
-    startGame(); 
+    startGame(); //initialize the game area
   };
+}
 
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
@@ -9,8 +10,8 @@ const ctx = canvas.getContext('2d');
 //startGame - just the road and the car
 //create the road
 //create the car - done in class car
-//create a game area 
-//move the car (rigth/left)
+//create a game area -updatecanvas??
+//move the car (rigth/left) - done in class car
 //create obstacles
 //move the background with the obstacles
 //check the colision between car and obstacles
@@ -45,10 +46,10 @@ class car {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
     moveLeft() {
-      this.x -= 25;
+      return this.x;
     }
     moveRight() {
-      this.x += 25;
+      return this.x + this.width;
     }
     newPos() { // updating the position of the car
       this.x += this.speedX;
@@ -61,36 +62,25 @@ class car {
 
 const carPlayer = new car();
 
-function updateCanvas() {
+document.addEventListener('keydown', e => {
+  switch (e.keyCode) {
+    case 37:
+      carPlayer.moveLeft();
+      break;
+    case 39:
+      carPlayer.moveRight();
+      break;
+  }
+  updateCanvas();
+});
+
+function updateCanvas() {//update the game
+    ctx.clear()
     road();
-    carPlayer.newPos();//in the new position??
-    carPlayer.update();
+    carPlayer.newPos();//new position 
+    carPlayer.update();//update new postition
+    //update obstacles
+    //check gameover
   }
 
-document.addEventListener('keydown', e => {
-    switch (e.keyCode) {
-      case 37:
-        carPlayer.moveLeft();
-        console.log('left', carPlayer);
-        break;
-      case 39:
-        carPlayer.moveRight();
-        console.log('right', carPlayer);
-        break;
-    }
-    updateCanvas();
-  });
- 
-
-
-
-
 const myObstacles = [];
-
-function updateGameArea() { // updating our Game
-  myGameArea.clear(); // clear Canvas
-}
-
-
-
- 
