@@ -3,7 +3,6 @@ window.onload = () => {
     startGame(); //initialize the game area
   };
 }
-
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -27,8 +26,7 @@ function startGame() {
 function road() {
   const roadImg = new Image(); // Create new <img> element
   roadImg.src = './images/road.png'; // Set source path
-  // Draw road image on canvas drawImage(image, x, y, width, height)
-  ctx.drawImage(roadImg, 0, 0, 500, 700);
+  ctx.drawImage(roadImg, 0, 0, 500, 700);  // Draw road image on canvas drawImage(image, x, y, width, height)
 }
 
 class car {
