@@ -135,7 +135,7 @@ class Obstacles {
 
 let gameStatus = 'playing'
 
-  /*function gameOver() {
+  function gameOver() {
       if (carPlayer.crashWith) {
         gameStatus = 'over';
         clearInterval(updateCanvas);
@@ -145,7 +145,7 @@ let gameStatus = 'playing'
         ctx.fillStyle = 'white';
         ctx.fillText(`Your Final Score: ${points}`, 130, 200);
     }
-  }*/
+  }
 
 
   function updateCanvas() {
@@ -155,5 +155,5 @@ let gameStatus = 'playing'
     carPlayer.update();
     updateObstacles();
     score();
-   // gameOver();
+    gameOver();
   }
